@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Убираем height: 100vh, чтобы страница могла прокручиваться */
+}
+
+.form-submit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 20px;
+    width: 500px; /* фиксированная ширина формы */
+}
+
+#tasks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* адаптивные колонки */
+    gap: 10px;
+    width: 100%;
+    max-width: 1200px; /* ограничение максимальной ширины сетки */
+}
+
+.task-card {
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    /* Добавляем для корректного переноса и ограничения ширины текста */
+    overflow-wrap: break-word; /* или word-wrap: break-word; */
+    word-break: break-word;
+    max-width: 100%; /* чтобы не выходил за контейнер */
+}
+
+
+.task-card button {
+    align-self: flex-end;
+}

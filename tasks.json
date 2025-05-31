@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Данил",
+    "lastName": "Файзуллин",
+    "patronymic": "Рамилевич",
+    "label": "Задача 1",
+    "description": "Описание задачи 1"
+  },
+  {
+    "id": 2,
+    "name": "Анна",
+    "lastName": "Петрова",
+    "patronymic": "Игоревна",
+    "label": "Задача 2",
+    "description": "Описание задачи 2"
+  },
+  {
+    "id": 3,
+    "name": "Иван",
+    "lastName": "Сидоров",
+    "patronymic": "Андреевич",
+    "label": "Задача 3",
+    "description": "Описание задачи 3"
+  },
+  {
+    "id": 4,
+    "name": "Мария",
+    "lastName": "Кузнецова",
+    "patronymic": "Олеговна",
+    "label": "Задача 4",
+    "description": "Описание задачи 4"
+  },
+  {
+    "id": 5,
+    "name": "Алексей",
+    "lastName": "Морозов",
+    "patronymic": "Викторович",
+    "label": "Задача 5",
+    "description": "Описание задачи 5"
+  },
+  {
+    "id": 6,
+    "name": "Екатерина",
+    "lastName": "Лебедева",
+    "patronymic": "Сергеевна",
+    "label": "Задача 6",
+    "description": "Описание задачи 6"
+  },
+  {
+    "id": 7,
+    "name": "Никита",
+    "lastName": "Ковалёв",
+    "patronymic": "Ильич",
+    "label": "Задача 7",
+    "description": "Описание задачи 7"
+  }
+]

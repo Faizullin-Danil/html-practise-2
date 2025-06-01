@@ -22,6 +22,7 @@ form.addEventListener('submit', (e) => {
     formData.forEach((value, key) => {
         task[key] = value;
     });
+        console.log(task)
 
     addTask(task)    
 
@@ -30,42 +31,98 @@ form.addEventListener('submit', (e) => {
 })
 
 function renderTask(tasks) {
-    const container = document.getElementById('tasks')
-    container.innerHTML = ''
+    const container = document.getElementById('tasks');
+    container.innerHTML = '';
 
-    console.log(tasks)
     tasks.forEach(task => {
-        const cardTask = document.createElement('div')
-        
-        cardTask.className = 'task-card'
+        console.log('rer')
+        const cardTask = document.createElement('div');
+        cardTask.className = 'task-card';
+
+        const iconHeart = task.isFavourite ? 'fa-solid' : 'fa-regular';
+
         cardTask.innerHTML = `
+            <i class="${iconHeart} fa-heart favourite-icon" data-id="${task.id}"></i>
             <h1>${task.label}</h1>
             <h2>${task.description}</h2>
             <div>
                 <p>Ответвенный: ${task.lastName} ${task.name} ${task.patronymic}</p>
             </div>
             <button class="buttonDelete" data-id="${task.id}">Удалить задачу</button>
-        `
+        `;
 
-        container.appendChild(cardTask)
-    })
+        cardTask.addEventListener('click', (event) => {
+            const target = event.target;
 
-    const deleteButtons = container.querySelectorAll('.buttonDelete')
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const id = button.getAttribute('data-id')
-            deleteTask(Number(id))
-        })
-    })
+            if (target.classList.contains('favourite-icon')) {
+                const id = Number(target.getAttribute('data-id'));
+                const currentTask = tasks.find(t => t.id === id);
+                if (currentTask) {
+                    currentTask.isFavourite = !currentTask.isFavourite;
+
+                    target.classList.toggle('fa-solid', currentTask.isFavourite);
+                    target.classList.toggle('fa-regular', !currentTask.isFavourite);
+                }
+            }
+
+            if (target.classList.contains('buttonDelete')) {
+                const id = Number(target.getAttribute('data-id'));
+                deleteTask(id);
+            }
+        });
+
+        container.appendChild(cardTask);
+    });
 }
 
 function addTask(task) {
-    tasks.push({...task, id: tasks.length + 1})
-    renderTask(tasks)
+    const newId = tasks.length + 1;
+    const newTask = {...task, id: newId, isFavourite: false};
+    tasks.push(newTask);    
+
+    const container = document.getElementById('tasks')
+    const newTaskCard = document.createElement('div')
+    newTaskCard.className = 'task-card';
+
+    newTaskCard.innerHTML = `
+        <i class="fa-regular fa-heart favourite-icon" data-id="${newId}"></i>
+        <h1>${task.label}</h1>
+        <h2>${task.description}</h2>
+        <div>
+            <p>Ответвенный: ${task.lastName} ${task.name} ${task.patronymic}</p>
+        </div>
+        <button class="buttonDelete" data-id="${newId}">Удалить задачу</button>
+    `;
+
+    newTaskCard.addEventListener('click', (event) => {
+            const target = event.target;
+
+            if (target.classList.contains('favourite-icon')) {
+                const currentTask = tasks.find(t => t.id === newId);
+                if (currentTask) {
+                    currentTask.isFavourite = !currentTask.isFavourite;
+
+                    target.classList.toggle('fa-solid', currentTask.isFavourite);
+                    target.classList.toggle('fa-regular', !currentTask.isFavourite);
+                }
+            }
+
+            if (target.classList.contains('buttonDelete')) {
+                deleteTask(newId);
+            }
+        });
+
+    container.appendChild(newTaskCard)
 }
 
 function deleteTask(taskId) {
-    tasks = tasks.filter(task => task.id !== taskId)
-    renderTask(tasks)
+    tasks = tasks.filter(task => task.id !== taskId);
+
+    const container = document.getElementById('tasks');
+    const cardToRemove = container.querySelector(`.task-card button[data-id="${taskId}"]`)?.parentElement;
+    if (cardToRemove) {
+        container.removeChild(cardToRemove);
+    }
 }
+
 

@@ -5,7 +5,8 @@
     "lastName": "Файзуллин",
     "patronymic": "Рамилевич",
     "label": "Задача 1",
-    "description": "Описание задачи 1"
+    "description": "Описание задачи 1",
+    "isFavourite": false
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "lastName": "Петрова",
     "patronymic": "Игоревна",
     "label": "Задача 2",
-    "description": "Описание задачи 2"
+    "description": "Описание задачи 2",
+    "isFavourite": false
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "lastName": "Сидоров",
     "patronymic": "Андреевич",
     "label": "Задача 3",
-    "description": "Описание задачи 3"
+    "description": "Описание задачи 3",
+    "isFavourite": false
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "lastName": "Кузнецова",
     "patronymic": "Олеговна",
     "label": "Задача 4",
-    "description": "Описание задачи 4"
+    "description": "Описание задачи 4",
+    "isFavourite": false
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "lastName": "Морозов",
     "patronymic": "Викторович",
     "label": "Задача 5",
-    "description": "Описание задачи 5"
+    "description": "Описание задачи 5",
+    "isFavourite": false
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "lastName": "Лебедева",
     "patronymic": "Сергеевна",
     "label": "Задача 6",
-    "description": "Описание задачи 6"
+    "description": "Описание задачи 6",
+    "isFavourite": false
   },
   {
     "id": 7,
@@ -53,6 +59,7 @@
     "lastName": "Ковалёв",
     "patronymic": "Ильич",
     "label": "Задача 7",
-    "description": "Описание задачи 7"
+    "description": "Описание задачи 7",
+    "isFavourite": false
   }
 ]

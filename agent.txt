@@ -1,0 +1,34 @@
+// Агент WebTutor (WTL)
+
+var startDate = Date("2022-01-12");
+var endDate = Date("2022-12-12");
+
+// Получаем всех сотрудников, принятых на работу в указанный период
+var users = ArraySelectAll(XQuery(`
+  for $u in usr_user
+  where $u/hiredate >= ${XSQLDate(startDate)} and $u/hiredate <= ${XSQLDate(endDate)}
+  return
+    <user>
+      <id>{$u/id}</id>
+    </user>
+`));
+
+foreach (user in users) {
+  var userId = user.id;
+
+  // Получаем курсы сотрудника с процентом <= 60
+  var courses = ArraySelectAll(XQuery(`
+    for $cu in trn_course_user
+    where $cu/user_id = ${userId}
+      and $cu/percentcomplete <= 60
+    return
+      <course>
+        <id>{$cu/id}</id>
+      </course>
+  `));
+
+  // Удаляем каждый курс из таблицы связей
+  foreach (course in courses) {
+    DeleteDoc(UrlFromDocID(course.id));
+  }
+}
